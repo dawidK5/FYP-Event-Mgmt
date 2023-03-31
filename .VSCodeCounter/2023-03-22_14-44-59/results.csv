@@ -1,0 +1,10 @@
+"filename", "language", "Python", "comment", "blank", "total"
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\__init__.py", "Python", 0, 0, 1, 1
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\admin.py", "Python", 4, 1, 1, 6
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\apps.py", "Python", 4, 0, 3, 7
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\migrations\__init__.py", "Python", 0, 0, 1, 1
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\models.py", "Python", 99, 21, 28, 148
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\tests.py", "Python", 1, 1, 2, 4
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\urls.py", "Python", 5, 0, 1, 6
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\views.py", "Python", 8, 1, 3, 12
+"Total", "-", 121, 24, 40, 185

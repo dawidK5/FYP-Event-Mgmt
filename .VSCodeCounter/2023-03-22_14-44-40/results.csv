@@ -1,0 +1,17 @@
+"filename", "language", "Python", "comment", "blank", "total"
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\__init__.py", "Python", 0, 0, 1, 1
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\admin.py", "Python", 1, 1, 2, 4
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\apps.py", "Python", 4, 0, 3, 7
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\auth\views.py", "Python", 53, 5, 7, 65
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\clubs\views.py", "Python", 10, 0, 3, 13
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\events\serializers.py", "Python", 18, 2, 5, 25
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\events\views.py", "Python", 45, 9, 9, 63
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\migrations\__init__.py", "Python", 0, 0, 1, 1
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\models.py", "Python", 1, 1, 2, 4
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\tests.py", "Python", 1, 1, 2, 4
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\urls.py", "Python", 16, 15, 2, 33
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\users\serializers.py", "Python", 19, 2, 7, 28
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\users\urls.py", "Python", 0, 0, 1, 1
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\users\views.py", "Python", 28, 4, 4, 36
+"c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\views.py", "Python", 1, 1, 3, 5
+"Total", "-", 197, 41, 52, 290

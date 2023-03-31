@@ -1,0 +1,57 @@
+Date : 2023-03-22 14:44:59
+Directory : c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt
+Total : 23 files,  -76 codes, -17 comments, -12 blanks, all -105 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Python   |         23 |        -76 |        -17 |        -12 |       -105 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                               | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                  |         23 |        -76 |        -17 |        -12 |       -105 |
+| . (Files)                                                                                          |          7 |        121 |         24 |         39 |        184 |
+| ..                                                                                                 |         15 |       -197 |        -41 |        -52 |       -290 |
+| ..\api                                                                                             |         15 |       -197 |        -41 |        -52 |       -290 |
+| ..\api (Files)                                                                                     |          7 |        -24 |        -19 |        -15 |        -58 |
+| ..\api\auth                                                                                        |          1 |        -53 |         -5 |         -7 |        -65 |
+| ..\api\clubs                                                                                       |          1 |        -10 |          0 |         -3 |        -13 |
+| ..\api\events                                                                                      |          2 |        -63 |        -11 |        -14 |        -88 |
+| ..\api\migrations                                                                                  |          1 |          0 |          0 |         -1 |         -1 |
+| ..\api\users                                                                                       |          3 |        -47 |         -6 |        -12 |        -65 |
+| migrations                                                                                         |          1 |          0 |          0 |          1 |          1 |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                           | language | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\__init__.py                   | Python   |          0 |          0 |         -1 |         -1 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\admin.py                      | Python   |         -1 |         -1 |         -2 |         -4 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\apps.py                       | Python   |         -4 |          0 |         -3 |         -7 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\auth\views.py                 | Python   |        -53 |         -5 |         -7 |        -65 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\clubs\views.py                | Python   |        -10 |          0 |         -3 |        -13 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\events\serializers.py         | Python   |        -18 |         -2 |         -5 |        -25 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\events\views.py               | Python   |        -45 |         -9 |         -9 |        -63 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\migrations\__init__.py        | Python   |          0 |          0 |         -1 |         -1 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\models.py                     | Python   |         -1 |         -1 |         -2 |         -4 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\tests.py                      | Python   |         -1 |         -1 |         -2 |         -4 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\urls.py                       | Python   |        -16 |        -15 |         -2 |        -33 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\users\serializers.py          | Python   |        -19 |         -2 |         -7 |        -28 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\users\urls.py                 | Python   |          0 |          0 |         -1 |         -1 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\users\views.py                | Python   |        -28 |         -4 |         -4 |        -36 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\api\views.py                      | Python   |         -1 |         -1 |         -3 |         -5 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\__init__.py            | Python   |          0 |          0 |          1 |          1 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\admin.py               | Python   |          4 |          1 |          1 |          6 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\apps.py                | Python   |          4 |          0 |          3 |          7 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\migrations\__init__.py | Python   |          0 |          0 |          1 |          1 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\models.py              | Python   |         99 |         21 |         28 |        148 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\tests.py               | Python   |          1 |          1 |          2 |          4 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\urls.py                | Python   |          5 |          0 |          1 |          6 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\event_mgmt\views.py               | Python   |          8 |          1 |          3 |         12 |
+| Total                                                                                              |          |        -76 |        -17 |        -12 |       -105 |
++----------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

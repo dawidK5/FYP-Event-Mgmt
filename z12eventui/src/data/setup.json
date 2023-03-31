@@ -1,0 +1,262 @@
+[
+    {
+        "table_name": "Junior",
+        "gender": "M",
+        "distance": "2000m",
+        "age_categories": [
+            "J14",
+            "J15",
+            "J16"
+        ],
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "Open"
+        ]
+    },
+    {
+        "table_name": "Junior",
+        "gender": "M",
+        "distance": "6000m",
+        "age_categories": [
+            "J14",
+            "J15",
+            "J16"
+        ],
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "Open"
+        ]
+    },
+    {
+        "table_name": "Junior",
+        "gender": "F",
+        "distance": "2000m",
+        "age_categories": [
+            "J14",
+            "J15",
+            "J16"
+        ],
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "Open"
+        ]
+    },
+    {
+        "table_name": "Junior",
+        "gender": "F",
+        "distance": "6000m",
+        "age_categories": [
+            "J14",
+            "J15",
+            "J16"
+        ],
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "Open"
+        ]
+    },
+    {
+        "table_name": "Youth",
+        "gender": "M",
+        "distance": "2000m",
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "60kg",
+            "70kg",
+            "80kg"
+        ],
+        "age_categories": [
+            "U19",
+            "U21",
+            "U23"
+        ]
+    },
+    {
+        "table_name": "Youth",
+        "gender": "F",
+        "distance": "2000m",
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "60kg",
+            "70kg",
+            "80kg"
+        ],
+        "age_categories": [
+            "U19",
+            "U21",
+            "U23"
+        ]
+    },
+    {
+        "table_name": "Youth",
+        "gender": "M",
+        "distance": "6000m",
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "60kg",
+            "70kg",
+            "80kg"
+        ],
+        "age_categories": [
+            "U19",
+            "U21",
+            "U23"
+        ]
+    },
+    {
+        "table_name": "Youth",
+        "gender": "F",
+        "distance": "6000m",
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "60kg",
+            "70kg",
+            "80kg"
+        ],
+        "age_categories": [
+            "U19",
+            "U21",
+            "U23"
+        ]
+    },
+    {
+        "table_name": "Master",
+        "gender": "M",
+        "distance": "2000m",
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "60kg",
+            "70kg",
+            "80kg"
+        ],
+        "age_categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+        ]
+    },
+    {
+        "table_name": "Master",
+        "gender": "F",
+        "distance": "2000m",
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "60kg",
+            "70kg",
+            "80kg"
+        ],
+        "age_categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+        ]
+    },
+    {
+        "table_name": "Master",
+        "gender": "M",
+        "distance": "6000m",
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "60kg",
+            "70kg",
+            "80kg"
+        ],
+        "age_categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+        ]
+    },
+    {
+        "table_name": "Master",
+        "gender": "F",
+        "distance": "6000m",
+        "boat_classes": [
+            "1X",
+            "2X",
+            "2-",
+            "4X"
+        ],
+        "weight_categories": [
+            "60kg",
+            "70kg",
+            "80kg"
+        ],
+        "age_categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+        ]
+    }
+]

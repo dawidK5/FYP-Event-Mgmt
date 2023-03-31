@@ -1,0 +1,217 @@
+
+User
+{
+	"uid": int (autogen)
+	"name": str
+	"email": str
+	"phone": str
+	"password": str
+	"active": boolean
+	"image": binary
+	"dob": date
+	"weight": double
+	"club": str
+	"category": str
+	"location": str
+	"bank_details": {
+		"bank_detail1": str
+		"bank_detail2": str
+		"bank_detailx": str
+	}
+	"isAdmin": boolean
+}
+
+// for displaying, searching and filtering all events
+// enums:
+// status: not_yet_opened, registration_opened, registration_finished, started, finished_missing_res, results available
+// cron job for old events with results uploaded
+
+"events_for_search": [
+  {
+    "age_category": "J15",
+    "weight_category": "Lightweight (60kg)",
+    "individual_only": false,
+    "events": [
+      ""
+    ]
+  }
+]
+
+// Collection for showing recent events
+"events_recent": [
+  {
+    "_id": "3eb292c",
+    "event_id": "1a3bc45",
+    "cover_photo": "/photos/1a3bc45",
+    "status": "registration_open",
+    "title": "National Series I 2k",
+    "boat_classes": ["1X", "2-", "4X"],
+    "gender": ["Male"],
+    "age_type": ["Junior", "Youth", "Master"],
+    "series_type": "National Series",
+    "rating": 4.3,
+    "first_day": "30012023Z"
+  }
+  
+],
+
+
+"age_refs": [
+  {}
+]
+
+//insertion only
+"events_archive_2022": [
+  {
+    "month": 12,
+    "events_details": [
+
+    ]
+  }
+]
+
+
+"events_recent_details": [
+  {
+    "_id": "1abc",
+    "title": "Annual Regattas",
+    "host_id": "2cba",
+    "type": "individual",
+    "series_type": "regional",
+    "location": {
+      "country": "Ireland",
+      "region": "Munster",
+      "venue_name": "River Shannon, Co Limerick",
+      "coordinates": "55.123N 23.222W",
+    },
+    "rowers_limit": 20,
+    "category": "offshore",
+    "all_boat_classes": ["1X", "2-", "4X"],
+    "all_distances": ["2000m", "6000m"],
+    "allowed_participants": {
+      "Men": {
+        "2000m": {
+          "J15": {
+            "2X" :{
+              "60kg": true
+            }
+            
+
+          }
+                "2000m": true
+              }
+            }
+          }
+
+        }
+      },
+      "Women": {
+
+      }
+    }
+    "gender_categories": [
+      {
+        "gender": "M",
+        "weight_categories": [
+          {
+            "weight": "60kg",
+            "age_categories": [
+              {
+                "age_band": "U20",
+                "distance": "2000m",
+                "teams_limit": 20 // e.g. 20 teams of 1
+              },
+              {
+                "age-band": "Masters A",
+                "distance": "2000m",
+                "teams_limit": 18
+              },
+            ],
+          },
+          {
+            "weight": "70kg",
+            "age_categories": "U19"
+          }
+        ]
+      },
+    ],
+    "event_start": "T121500Z",
+    "event_end": "T124500Z",
+    "fee": {
+      "currency": "EUR",
+      "amount": 20.0
+    },
+    "contact": "Sean O'Leary",
+    "description": "Lorem ipsum...",
+    "photos": {
+      "cover": "/photos/main.jpg",
+      "other": [
+        "photos/rowers.jpg",
+        "photos/venue.jpg"
+      ]
+    }
+  }
+
+
+  "results": [
+    {
+      "event_id": "123bca",
+      "age_category": "U23",
+      "weight_category": "60",
+      "boat_class": "4X",
+      "entries": [
+    {
+      "club_name": "St Michael's Rowing Club",
+      "club_id": "111aaa",
+      "club_logo": "oars/111aaa",
+      "team": [
+        {
+          "name": "John Doe",
+          "user_id": "123abcdef"
+        },
+        {
+          "name": "Sean O'Leary",
+          "user_id": "1234abcdef"
+        },
+        {
+          "name": "Adam Murphy",
+          "user_id": "12354abcdef",
+          "cox": true
+        },
+      ],
+      "position": 1,
+      "bow_no": 1,
+      "time": "01:03:12.345"
+
+    },
+    {
+      "club_name": "UL Rowing",
+      "club_id": "111aaa",
+      "club_logo": "oars/111aaa",
+      "team": [
+        {
+          "name": "John Doe",
+          "user_id": "123abcdef"
+        },
+        {
+          "name": "Sean O'Leary",
+          "user_id": "1234abcdef"
+        },
+        {
+          "name": "Adam Murphy",
+          "user_id": "12354abcdef",
+          "cox": true
+        },
+      ],
+      "position": 1,
+      "bow_no": 1,
+      "time": "01:03:12.345"
+
+    },
+  ],
+  gender
+  country // can athletes participate in events in other countries
+  hours_count // what was meant by that in user stories
+  participants // optional
+  // other naming scheme, multiple rounds per one event? heats repechage semifinals finals
+
