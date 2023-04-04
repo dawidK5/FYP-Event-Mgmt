@@ -46,22 +46,21 @@ import { Routes, Route, Link as RLink, redirect, useNavigate } from 'react-route
 // import { createTheme } from '@mui/material/styles';
 
 // import Home from './pages/home.js';
-function App() {
+function App({ element }) {
   console.log(`============== Theme: ${theme}`);
   // const [loggedIn, setLoggedIn] = useState(authenticated);
   document.title = "Z12 Events Manager - All Events"
-
-  return (
-  <Routes>
-    <Route path="/" element={<Home authenticated={false} />} />
-    <Route path="/home" element={<Home authenticated={true} />} />
-    <Route path="/login" element={<LoginPage />} />
-    <Route path="/register" element={<RegisterFirstPage />} />
-    <Route path="/registerMinor" element={<RegisterSecondPage />} />
-    <Route path="/createEvent" element={<CreateEventBasic />} />
-    <Route path="/events/1" element={<EventDetailPage />} />
-  </Routes>
-  );
+  // redirect('home');
+  return(<></>);
+  // <Routes>
+  //   <Route path="/" element={<Home authenticated={false} />} />
+  //   <Route path="/home" element={<Home authenticated={true} />} />
+  //   <Route path="/login" element={<LoginPage />} />
+  //   <Route path="/register" element={<RegisterFirstPage />} />
+  //   <Route path="/registerMinor" element={<RegisterSecondPage />} />
+  //   <Route path="/createEvent" element={<CreateEventBasic />} />
+  //   <Route path="/events/1" element={<EventDetailPage />} />
+  // </Routes>
 }
 
 export default App;

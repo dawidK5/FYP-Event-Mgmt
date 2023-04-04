@@ -42,5 +42,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-test-renderer": "^18.2.0"
+  },
+  "jest": {
+    "transform": {
+      "\\.[jt]sx?$": ["babel-jest", {"jest": {"globals": { "isolatedModules": true }}}]
+    }
   }
 }

@@ -51,8 +51,8 @@ export function BasicEventReg({ series, categories, formDetails, setFormDetails 
   // },[selectCat]);
   return (
     <>
-      <TextField name="title" label="Title" required validate="true" defaultValue={formDetails.title}
-        onChange={(e) => setFormDetails({ ...formDetails, title: e.target.value })} >
+      <TextField name="title" label="Title" required inputProps={{ minLength: 8}} validate="true" defaultValue={formDetails.title}
+        onChange={(e) => setFormDetails({ ...formDetails, title: e.target.value })}>
       </TextField>
       {/* <TextField name="group_type" type="hidden" value="Individual" /> */}
 
@@ -276,13 +276,13 @@ export function FeesReg({ formDetails, setFormDetails }) {
   return (
     <Grid container>
       <Grid item xs={6}>
-        <TextField fullWidth type="number" name="fees.amount" min={0} label="Fee to be paid per team" defaultValue={formDetails.fees.amount} onChange={(e) => setFormDetails({ ...formDetails, fees: { ...formDetails.fees, amount: e.target.value } })} required validate></TextField>
+        <TextField fullWidth type="number" min={0} label="Fee to be paid per team" defaultValue={formDetails.fees.amount} onChange={(e) => setFormDetails({ ...formDetails, fees: { ...formDetails.fees, amount: e.target.value } })} required validate></TextField>
 
       </Grid>
       <Grid item xs={2} />
       <Grid item xs={4}>
 
-        <TextField fullWidth name="fees.currency" select label='Please select currency' defaultValue={formDetails.fees.currency} onChange={(e) => setFormDetails({ ...formDetails, fees: { ...formDetails.fees, currency: e.target.value } })} SelectProps={{ multiple: false }} required validate>
+        <TextField fullWidth select label='Please select currency' defaultValue={formDetails.fees.currency} onChange={(e) => setFormDetails({ ...formDetails, fees: { ...formDetails.fees, currency: e.target.value } })} SelectProps={{ multiple: false }} required validate>
           {
             (CURRENCIES.length > 0) ? (CURRENCIES.map((country, id) => (
               <MenuItem key={id} value={country}>{country}</MenuItem>
@@ -290,7 +290,7 @@ export function FeesReg({ formDetails, setFormDetails }) {
           }
         </TextField>
         
-        <TextField sx={{display: 'none'}} type="hidden" hidden="true" name="host_id" value="63ff8250ae0ad7639b9c6b48"></TextField>
+        <TextField sx={{display: 'none'}} name="host_id" value="63ff8250ae0ad7639b9c6b48"></TextField>
 
       </Grid>
     </Grid>

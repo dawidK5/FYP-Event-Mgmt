@@ -59,6 +59,7 @@ export function CreateEventBasic() {
       amount: 0,
       currency: '',
     },
+    host_id: '',
     allowed_participants: {},
   });
   const [renderedTables, setRenderedTables] = useState([]);
@@ -102,13 +103,13 @@ export function CreateEventBasic() {
     console.log('--- new details: ');
     console.log(details);
     setFormDetails({
-      ...Object.fromEntries(Object.entries(formDetails)),
-      ...Object.fromEntries(details)
+      ...formDetails,
+      ...details,
     });
     if (regStep < 3) {
       setRegStep(regStep + 1);
     } else {
-      uploadEvent(formDetails)
+      uploadEvent(formDetails);
     }
 
   };

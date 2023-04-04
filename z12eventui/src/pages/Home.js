@@ -13,7 +13,7 @@ import {AppNavBar} from '../components/Home';
 import {EventCard} from '../components/Events';
 
 
-export default function Home(authenticated) {
+export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [eventCards, setEventCards] = useState([]);
   const eventsJson = () => apiGetAndProcess('events', null, setEventCards);
@@ -27,7 +27,7 @@ export default function Home(authenticated) {
   return (
     <>
       <ThemeProvider theme={themeOrange}>
-        <AppNavBar authenticated={authenticated} />
+        <AppNavBar />
         <Container>
           <Typography variant='h4' align='center'>All Events</Typography>
           <Grid container spacing={3}>

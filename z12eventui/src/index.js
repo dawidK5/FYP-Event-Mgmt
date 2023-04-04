@@ -3,10 +3,54 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import LoginPage from './pages/Login';
+import { RegisterFirstPage, RegisterSecondPage } from './pages/Register';
+import { CreateEventBasic, EventDetailPage } from './pages/Events';
+import Home from './pages/Home';
+// import * as React from "react";
+// import * as ReactDOM from "react-dom";
 
 
+// import Root, { rootLoader } from "./routes/root";
+// import Team, { teamLoader } from "./routes/team";
 
+const router = createBrowserRouter([
+  // {
+    // path: "/",
+    // element: <></>,
+    // children: [
+      {
+        path: "",
+        element: <Home />
+      },
+      {
+        path: "/login",
+        element: <LoginPage />
+      },
+      {
+        path: "/register",
+        element: <RegisterFirstPage />
+      },
+      {
+        path: "/registerMinor",
+        element: <RegisterSecondPage />
+      },
+      {
+        path: "/createEvent",
+        element: <CreateEventBasic />
+      },
+      {
+        path: "/events/:id",
+        element: <EventDetailPage />
+      }
+    // ],
+  // },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
+);
 // const router = createBrowserRouter([
 //   {
 //     path: "/",
@@ -17,12 +61,12 @@ import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router
 //     element: <LoginPage />
 //   }
 // ]);
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <BrowserRouter>
+//     <App />
+//   </BrowserRouter>
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
