@@ -1,4 +1,4 @@
-import bcrypt
+# import bcrypt
 from event_mgmt.models import *
 from .serializers import UserSerializer
 from rest_framework.parsers import JSONParser

@@ -42,10 +42,6 @@ export function AthleteCoachInputs(clubsList) {
           </TextField>
         </AccordionDetails>
       </Accordion>
-      {/* <FormControlLabel control={<Checkbox onChange={}/>} label="I am an athlete/rower" />
-       
-      <FormControlLabel control={<Checkbox />} label="I am a coach" />
-      <FormControlLabel control={<Checkbox />} label="I am a club manager" /> */}
     </>
 
   );
@@ -56,12 +52,12 @@ export function BasicRegistrationInputs(clubsList) {
     const arr = clubsList.clubsList;
     return (
       <>
-        <TextField label="Name (first and surname)" type="name" name="name" required={true} />
+        <TextField label="Name (first and surname)" type="name" name="name" defaultValue='John Doe' required={true} />
         <TextField label="Email" type="email" name="email" validate="true" required={true}></TextField>
         <TextField label="Password" type="password" name="password" required={true} />
-        <TextField label="Confirm password" type="password" name="confirm_password" required={true} />
-        <TextField type="date" name="dob" max={currentDate} step="1" validate="true" required={true} />
-        <TextField label="Phone number (including country prefix)" type="tel" name="phone" validate="true" required={true} />
+        <TextField label="Confirm password" type="password" name="confirm_password" defaultValue='rowing2023' required={true} />
+        <TextField type="date" name="dob" max={currentDate} defaultValue='1999-05-15'step="1" validate="true" required={true} />
+        <TextField label="Phone number (including country prefix)" type="tel" name="phone" validate="true" defaultValue='+35389123456789' required={true} />
         <TextField label="Club you are affiliated with" name="club" select defaultValue={0} SelectProps={{ multiple: false }} required={true}>
           {
             (arr.length > 0) ? (arr.map((clubEntry) => (

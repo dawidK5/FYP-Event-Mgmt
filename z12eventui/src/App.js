@@ -34,7 +34,7 @@ import { CreateEventBasic, EventDetailPage } from './pages/Events';
 // import Menu from '@mui/material/Menu';
 // import cardImage from '../public/img/card_cover_1.png';
 import theme from './styles/theme/index';
-import { Routes, Route, Link as RLink, redirect, useNavigate } from 'react-router-dom';
+// import { Routes, Route, Link as RLink, redirect, useNavigate } from 'react-router-dom';
 // import Stack from '@mui/material/Stack';
 // import CssBaseline from '@mui/material/CssBaseline';
 // import Paper from '@mui/material/Paper';

@@ -5,14 +5,14 @@ from .users import views as userViews
 from .auth import views as authViews
 
 urlpatterns = [
-    path('events', eventViews.manage_events),
-    path('events/series', eventViews.list_event_series),
-    path('events/categories', eventViews.list_event_categories),
-    path('events/headings', eventViews.list_table_headings),
-    path('events/<slug:title>', eventViews.list_event_details),
-    path('clubs', clubViews.list_clubs),
-    path('users', userViews.create),
-    path('auth/getToken', authViews.get_csrf_token),
-    path('auth/getSession', authViews.get_session),
-    path('auth/login', authViews.login_view)
+    path('events', eventViews.manage_events, name='events'),
+    path('events/series', eventViews.list_event_series, name='events-series'),
+    path('events/categories', eventViews.list_event_categories, name='events-categories'),
+    path('events/headings', eventViews.list_table_headings, name='events-headings'),
+    path('events/<slug:event_id>', eventViews.list_event_details, name='events-id'),
+    path('clubs', clubViews.list_clubs, name='clubs'),
+    path('users', userViews.create, name='users'),
+    path('auth/getToken', authViews.get_csrf_token, name='auth-get-token'),
+    path('auth/getSession', authViews.get_session, name='auth-get-session'),
+    path('auth/login', authViews.login_view, name='auth-login')
 ]

@@ -1,0 +1,5 @@
+{"title": "Munster Rowing Event 2k", "series_type": "Regional", "event_category": "Rowing", "location": "River Shannon Co Limerick",
+"country": "Ireland", "reg_start": "2023-03-31T00:01", "reg_end": "2023-03-31T23:59", "event_start": "2023-04-05T10:00",
+"event_end": "2023-04-05T12:30", "fees": {"amount": "5", "currency": "EUR"}, "host_id": "0a1b2f3c",
+"allowed_participants": {"M": {"2000m": {"J16": {"2X": ["Open"]}}}, "F": {"2000m": {"U23": ["60kg", "70kg"]}}},
+"description": "Welcome!\nSee you at the rowing event!"}

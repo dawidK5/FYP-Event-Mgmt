@@ -38,17 +38,23 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+
+    # 'django_mongoengine.mongo_auth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'rest_framework',
+    'rest_framework_mongoengine',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'event_mgmt',
     'api',
-    'corsheaders',
-    'django_mongoengine',
-    'django_mongoengine.mongo_auth',
+    # 'corsheaders',
+    # 'mongoengine',
+    # 'django_mongoengine.mongo_auth',
+    # 'django_mongoengine.mongo_auth.backends',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +66,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'z12event.urls'
@@ -129,23 +137,23 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
+# STATIC_ROOT = BASE_DIR / 'z12eventui/build/static'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,  'z12eventui/build/static'),
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTHENTICATION_BACKENDS = [
-    'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
-]
+# AUTHENTICATION_BACKENDS = [
+#     'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
+# ]
 # AUTH_USER_MODEL = 'mongo_auth.MongoUser'
 # MONGOENGINE_USER_DOCUMENT = 'mongoengine.django.auth.User'
 # SESSION_ENGINE = 'mongoengine.django.sessions'
@@ -184,9 +192,23 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.SessionAuthentication', 'rest_framework.authentication.BasicAuthentication'],
     'DEFAULT_PARSER_CLASSES': ['rest_framework.parsers.JSONParser']
 }
-DATABASES = MONGODB_DATABASES = {
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
+#         'NAME': 'eventmgmt',
+#         'name': 'eventmgmt',
+#         'host': 'localhost:27017',
+#         'password': 'rowing2023',
+#         'username': 'z12Admin',
+#         'tz_aware': True,  # if you using timezones in django (USE_TZ = True)
+#     },
+# }
+
+MONGODB_DATABASES = {
     'default': {
-        'name': 'event_mgmt',
+        'ENGINE': 'django.db.backends.dummy',
+        'name': 'eventmgmt',
         'host': 'localhost:27017',
         'password': 'rowing2023',
         'username': 'z12Admin',
@@ -194,9 +216,10 @@ DATABASES = MONGODB_DATABASES = {
     },
 }
 # for auth
-AUTH_USER_MODEL = 'mongo_auth.MongoUser'
+# AUTH_USER_MODEL = 'mongo_auth.MongoUser'
 # MONGOENGINE_USER_DOCUMENT = 'event_mgmt.User'
 
+DATABASES = MONGODB_DATABASES
 SESSION_ENGINE = 'django_mongoengine.sessions'
 SESSION_SERIALIZER = 'django_mongoengine.sessions.BSONSerializer'
 

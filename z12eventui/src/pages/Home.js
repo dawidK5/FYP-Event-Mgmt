@@ -29,12 +29,8 @@ export default function Home() {
       <ThemeProvider theme={themeOrange}>
         <AppNavBar />
         <Container>
-          <Typography variant='h4' align='center'>All Events</Typography>
+          <Typography variant='h3' align='center' mt={4} mb={3}>All Events</Typography>
           <Grid container spacing={3}>
-            {/* {eventCards.map((eventData, ind) => {
-              console.log('===== Event Data: ' + eventData);
-              return <EventCard data={eventData} key={ind} />
-            })} */}
           </Grid>
         </Container>
       </ThemeProvider>

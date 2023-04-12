@@ -12,11 +12,10 @@ class UserSerializer(serializers.DocumentSerializer):
         print("Creating user in the database, using validated data")
         return User(**self.validated_data).save()
     
-    def validate(self):
-        super.validate()
-        if self.is_minor():
-            
-            print("")
+    # def validate(self, data):
+    #     super().is_valid()
+    #     if self.is_minor():
+    #         print("Redirecting")
 
     def is_minor(self):
         # print(relativedelta(dt1=self.validated_data.get('dob'), dt2=date.today()))

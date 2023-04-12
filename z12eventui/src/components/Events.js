@@ -1,28 +1,26 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
+
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import { COUNTRIES } from '../data/constants';
-import InputLabel from '@mui/material/InputLabel';
-import Input from '@mui/material/Input';
+
 import IconButton from '@mui/material/IconButton';
-import Camera from '@mui/icons-material/Camera';
+
 import { Alert, Checkbox, Table, TableBody, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import TableCell from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
+
 import { AddCircleOutline } from '@mui/icons-material';
-import Divider from '@mui/material/Divider';
+
 import { useEffect, useState } from 'react';
 import Stack from '@mui/material/Stack';
-import { useFetcher } from 'react-router-dom';
 
 
-export function EventCard(data) {
+export function EventCard({ data }) {
   return (
     <Grid item xs={8}>
       <Card variant="outlined">
@@ -32,10 +30,6 @@ export function EventCard(data) {
           <Typography variant='h2'>{data.event_title}</Typography>
           <Typography variant='body1'>{data.venue_name}, {data.country}</Typography>
           <Typography variant='body1'>{data.event_dates}</Typography>
-          {/* <Divider orientation="vertical" /> */}
-          {/* <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
-          1 hour ago
-        </Typography> */}
         </CardContent>
       </Card>
     </Grid>
@@ -43,25 +37,20 @@ export function EventCard(data) {
 }
 
 export function BasicEventReg({ series, categories, formDetails, setFormDetails }) {
-  // const [selectCat, setSelectCat] = useState(categories[0]);
   const today = new Date(Date.now()).toISOString().substring(0, 16);
-  // let s = 1;
-  // useEffect(() => {
-  //   setTimeout(1000);
-  // },[selectCat]);
+
   return (
     <>
       <TextField name="title" label="Title" required inputProps={{ minLength: 8}} validate="true" defaultValue={formDetails.title}
         onChange={(e) => setFormDetails({ ...formDetails, title: e.target.value })}>
       </TextField>
-      {/* <TextField name="group_type" type="hidden" value="Individual" /> */}
 
       <TextField name="event_category" select label="Event category" defaultValue={formDetails.event_category}
-        onChange={(e) => setFormDetails({ ...formDetails, event_category: e.target.value })} required SelectProps={{ multiple: false }} validate="true">
-        {/* {(categories[0]) ? setSelectCat(categories[0]) : null} */}
+        onChange={(e) => {
+          setFormDetails({ ...formDetails, event_category: e.target.value });
+        }} required SelectProps={{ multiple: false }} validate="true">
         {categories.map((entry, ind) => <MenuItem key={ind} value={entry}>{entry}</MenuItem>)}
       </TextField>
-
 
       <TextField name="series_type" select label="Series type" required SelectProps={{ multiple: false }} validate="true"
         defaultValue={formDetails.series_type}
@@ -79,25 +68,6 @@ export function BasicEventReg({ series, categories, formDetails, setFormDetails 
           ))) : null
         }
       </TextField>
-      {/* <div style={{ height: '100vh', width: '100%' }}>
-      <GoogleMap
-        apiKey="AIzaSyDLIF49WyMiXhyK7hBtqviikkuuY3Cm5HE"
-        defaultCenter={{ lat: latitude, lng: longitude }}
-        defaultZoom={20}
-        // options={mapOptions}
-        mapMinHeight="100vh"
-        onGoogleApiLoaded={onGoogleApiLoaded}
-        onChange={(map) => console.log('Map moved', map)}
-      >
-        <div className="marker" key={0} position={{ lat: latitude, lng: longitude }} lat={latitude} lng={longitude} markerId={'venuelocation'} onClick={onMarkerClick} />
-      </GoogleMap>
-
-    </div> */}
-      {
-        // AIzaSyBDEuHvYmYbSum8cIZEHsK8bBhlD0bO0xw
-        // AIzaSyB6LvQ_RQNk9SazNYNJun-gBaPwJKM6Baw
-      }
-
       <Grid container rowSpacing={3}>
         <Grid item xs={5}>
           <TextField fullWidth name="reg_start" type="datetime-local" defaultValue={formDetails.reg_start || today} label="Registration Opens" required={true} validate="true"
@@ -125,9 +95,9 @@ export function BasicEventReg({ series, categories, formDetails, setFormDetails 
 export function EventDetailsReg({ formDetails, setFormDetails }) {
   return (
     <>
-      <TextField name="description" label="Description" minRows={2} defaultValue={formDetails.description} onChange={(e) => setFormDetails({ ...formDetails, description: e.target.value })} validate="true" multiline required></TextField>
-      {/* <Input name="imagename" accepts="image/jpeg, image/png" type="file" validate></Input> */}
-      {/* <Button component="input" variant="contained" endIcon={<Camera />}>Upload photo</Button> */}
+      <TextField name="description" label="Description" minRows={2} defaultValue={formDetails.description}
+        onChange={(e) => setFormDetails({ ...formDetails, description: e.target.value })} validate="true"
+        multiline required></TextField>
     </>
   );
 }
@@ -137,25 +107,14 @@ export function AgeGroupTable({ tableDetails, formDetails, setFormDetails, renTa
   const gender = tableDetails.gender;
   const distance = tableDetails.distance;
   const numWeights = tableDetails.weight_categories.length;
-  const numBoats = tableDetails.boat_classes.length;
+  // const numBoats = tableDetails.boat_classes.length;
   const numColsPerRow = tableDetails.boat_classes.length * tableDetails.weight_categories.length;
-  const numColsTotal = numColsPerRow * tableDetails.age_categories.length;
+  // const numColsTotal = numColsPerRow * tableDetails.age_categories.length;
 
   console.log("7688");
   console.log(chbVals);
-  // useEffect(() => {
-  //   console.log('in AgeGrou: participants changed');
-  // }, [formDetails]);
-  
-  const onCheckboxClicked = (e, checkboxIndex) => {
-    // update form allowed participants
 
-    // apply participants to checkbox values
-
-    // update state in checkboxValues
-  };
   const appendToForm = (e, checkboxInd) => {
-    // e.target.checked = true;
   
     const row = (checkboxInd / numColsPerRow) | 0;
     const relIndex = checkboxInd - (row * numColsPerRow);
@@ -199,7 +158,6 @@ export function AgeGroupTable({ tableDetails, formDetails, setFormDetails, renTa
   };
 
 
-  // checked={formDetails.allowed_participants[gender][distance][rowNum][(relIndex/numBoats) | 0][(relIndex%numBoats)] == true}
   const makeRow = (rowNum, i, even) => {
     const maxIndex = i + numColsPerRow;
     let checkboxRow = [];
@@ -242,13 +200,8 @@ export function AgeGroupTable({ tableDetails, formDetails, setFormDetails, renTa
 
           <Table>
             <TableHead>
-              {/* <TableRow key='rw0'>
-              <th key='acb'></th>
-              <th key='bc' colSpan={12}>Boat Classes</th>
-            </TableRow> */}
               <TableRow key='rw1'>
                 <TableCell sx={{ 'background': '#f6f6f6', 'fontWeight': 'bold' }} key='ac' rowSpan={2}>Categories</TableCell>
-                {/* <TableCell key='acc'></TableCell> */}
                 {tableDetails['boat_classes'].map((tero, ind) => <TableCell align='center' sx={(ind % 2) ? { 'background': 'orange', 'fontWeight': 'bold' } : { 'background': '#f6f6f6', 'fontWeight': 'bold' }} key={'bc'.concat(String(ind))} colSpan={numWeights}>{tero}</TableCell>)}
               </TableRow>
               <TableRow key='rw4'>
@@ -303,7 +256,7 @@ export function ParticipantsReg({ tableHeadings, setTableHeadings, formDetails, 
   const [distances, setDistances] = useState(['2000m', '6000m']);
   const [ages, setAges] = useState([...new Set(tableHeadings.map((v) => v.table_name))]);
   const [tableId, setTableId] = useState(0);
-  const [toRender, setToRender] = useState({gender: 'M', distance: distances[0], age: ages[0]});
+  const [toRender, setToRender] = useState({gender: 'Men', distance: distances[0], age: ages[0]});
 
   const updateCheckboxes = () => {
     const emptyArr = Array.from({length: 150}, _ => false);
@@ -343,8 +296,6 @@ export function ParticipantsReg({ tableHeadings, setTableHeadings, formDetails, 
     setTableId(tableId+1);
     generateTable(toPass);
     const headingsLessAdded = tableHeadings.filter(entry => !(entry.gender === toRender.gender && entry.table_name === toRender.age && entry.distance === toRender.distance));
-    console.log('zzzzzzz');
-    console.log(headingsLessAdded);
     setTableHeadings(headingsLessAdded);
   };
 
@@ -364,8 +315,8 @@ export function ParticipantsReg({ tableHeadings, setTableHeadings, formDetails, 
                   <TextField fullWidth select label="Gender" value={toRender.gender}
                     onChange={(e) => setToRender({ ...toRender, gender: e.target.value })} required
                     SelectProps={{ multiple: false }} validate="true">
-                    <MenuItem key={'gm0'} value={'M'}>Men</MenuItem>
-                    <MenuItem key={'gf0'} value={'F'}>Women</MenuItem>
+                    <MenuItem key={'gm0'} value={'Men'}>Men</MenuItem>
+                    <MenuItem key={'gf0'} value={'Women'}>Women</MenuItem>
                   </TextField>
                   <TextField fullWidth select label="Distance" required SelectProps={{ multiple: false }} validate="true"
                     defaultValue={toRender.distance}
@@ -391,7 +342,6 @@ export function ParticipantsReg({ tableHeadings, setTableHeadings, formDetails, 
               </Grid>
               <Grid item xs={12}>{alerts}</Grid>
             </Grid>
-          
           </Box>
         </Paper>
       </Box>

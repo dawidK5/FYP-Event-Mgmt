@@ -1,29 +1,21 @@
-import { redirect } from 'react-router-dom';
-
-
+import { redirect, useNavigate } from 'react-router-dom';
 
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
 import { AppNavBar } from '../components/Home';
 import { ThemeProvider } from '@emotion/react';
-import { themeOrange, COUNTRIES } from '../data/constants';
-import { useEffect, useState, useRef, createContext } from 'react';
+import { themeOrange } from '../data/constants';
+import { useEffect, useState } from 'react';
 import { apiGetAndProcess, apiPostAndProcess } from '../utils/api';
 
-// import { GoogleMapReact, Marker } from 'google-map-react';
-import GoogleMap from 'google-maps-react-markers';
 import { BasicEventReg, EventDetailsReg, FeesReg, ParticipantsReg } from '../components/Events';
 
 
@@ -36,34 +28,37 @@ import defaultTableHeadings from '../data/setup.json';
 
 
 export function CreateEventBasic() {
+  const [opened, setOpened] = useState(false);
+  const [subMsg, setSubMsg] = useState([]);
+
   const [seriesList, setSeriesList] = useState([]);
   const [categoriesList, setCategoriesList] = useState([]);
 
   const [checkboxValues, setCheckboxValues] = useState([]);
 
 
-  const [formAlert, setFormAlert] = useState([]);
   const [regStep, setRegStep] = useState(0);
   const [tableHeadings, setTableHeadings] = useState(defaultTableHeadings);
+  const today = new Date(Date.now()).toISOString().substring(0, 16);
+
   const [formDetails, setFormDetails] = useState({
-    title: 'Munster 2k',
-    series_type: '',
-    event_category: '',
+    title: 'Munster 2k U23s',
+    series_type: 'Rowing',
+    event_category: 'Regional',
     location: 'Shannon',
     country: 'Ireland',
-    reg_start: '',
-    reg_end: '',
-    event_start: '',
-    event_end: '',
+    reg_start: today,
+    reg_end: today,
+    event_start: today,
+    event_end: today,
     fees: {
       amount: 0,
-      currency: '',
+      currency: 'EUR',
     },
     host_id: '',
     allowed_participants: {},
   });
   const [renderedTables, setRenderedTables] = useState([]);
-  const [participantsReg, setParticipantsReg] = useState([]);
 
   
   const seriesJson = () => {
@@ -117,17 +112,20 @@ export function CreateEventBasic() {
     const myform = document.querySelector('form');
     return myform.reportValidity();
   };
+  const launchAlert = (result) => {
+    setOpened(true);
+    setSubMsg(result);
+  };
   const uploadEvent = (data) => {
     console.log(data);
-    apiPostAndProcess('events', {}, (result) => setFormAlert(<FormAlert data={result} />), data);
+    apiPostAndProcess('events', {}, launchAlert, data);
   };
 
   seriesJson();
   categoriesJson();
-  // headingsJson();
 
-  // useEffect(() => { }, [regStep]);
-
+  useEffect(() => { }, [opened]);
+  const navigate = useNavigate();
   return (
     <>
       <ThemeProvider theme={themeOrange}>
@@ -166,7 +164,13 @@ export function CreateEventBasic() {
             </form>
           </Grid>
         </Grid>
-        {formAlert}
+        <Dialog open={opened} onClose={() => navigate("/events/1")}>
+          <DialogTitle>{Object.keys(subMsg)[0]}</DialogTitle>
+          <DialogContent>{subMsg[Object.keys(subMsg)[0]]}</DialogContent>
+          <DialogActions>
+            <Button autoFocus onClick={() => setOpened(false)}>OK</Button>
+          </DialogActions>
+        </Dialog>
       </ThemeProvider>
     </>
   )
@@ -180,19 +184,35 @@ export function FormAlert({data}) {
       <DialogTitle>{msgKey}</DialogTitle>
       <DialogContent>{data[msgKey]}</DialogContent>
       <DialogActions>
-        <Button autofocus onClick={() => setOpened(false)}>OK</Button>
+        <Button autoFocus onClick={() => setOpened(false)}>OK</Button>
       </DialogActions>
     </Dialog>
   );
 }
 
-export function EventDetailPage() {
+export function EventDetailPage({ eventId='6429cd5d2973e9d50aef0d6e' }) {
   const [viewStep, setViewStep] = useState(0);
-  const [eventData, setEventData] = useState({});
+  const [eventData, setEventData] = useState('');
+  const getData = () => {
+    apiGetAndProcess('events/' + eventId, {}, (j) => { console.log(j); setEventData(j) });
+  }
   useEffect(() => {
-    apiGetAndProcess('events/1', {}, setEventData)
-
+    getData();
   }, [viewStep]);
+
+  const unwrapParticipants = () => {
+    if (eventData === '') {
+      return [];
+    }
+    const toPrint = [];
+    let ptr = eventData.allowed_participants;
+    for ( ; !(ptr instanceof Array); ptr = Object.keys(ptr)[0] ) {
+      console.log(...toPrint);
+      toPrint.push(Object.keys(ptr));
+    }
+    toPrint.push(...ptr);
+    return toPrint;
+  };
 
   return (
     <ThemeProvider theme={themeOrange}>
@@ -225,9 +245,16 @@ export function EventDetailPage() {
 
         </Grid>
         <Grid px={10} item xs={7}>
-
+        <Typography bold variant='h3'>{eventData.title}</Typography>
           <Typography bold variant='h5'>Description</Typography>
           <Typography>{eventData.description}</Typography>
+          <Typography bold variant='h5'>Categories</Typography>
+          <Typography variant='subtitle-1'>
+          {unwrapParticipants()}
+          
+          </Typography>
+
+
         </Grid>
       </Grid>
     </ThemeProvider>

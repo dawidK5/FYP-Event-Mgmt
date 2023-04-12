@@ -8,6 +8,7 @@ import LoginPage from './pages/Login';
 import { RegisterFirstPage, RegisterSecondPage } from './pages/Register';
 import { CreateEventBasic, EventDetailPage } from './pages/Events';
 import Home from './pages/Home';
+import About from './pages/About';
 // import * as React from "react";
 // import * as ReactDOM from "react-dom";
 
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     // element: <></>,
     // children: [
       {
-        path: "",
+        path: "/",
         element: <Home />
       },
       {
@@ -43,13 +44,23 @@ const router = createBrowserRouter([
       {
         path: "/events/:id",
         element: <EventDetailPage />
+      },
+      {
+        path: "/about",
+        element: <About />
       }
     // ],
   // },
 ]);
 
+document.title = "Z12 Events Manager"
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+    // <App />
+    // </RouterProvider>
 );
 // const router = createBrowserRouter([
 //   {

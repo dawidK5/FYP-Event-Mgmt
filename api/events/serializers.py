@@ -5,30 +5,28 @@ class EventDetailsSerializer(serializers.DocumentSerializer):
     class Meta:
         model = EventDetails
         fields = [key for key in EventDetails._fields]
-    
-    # def __init__(self, passedData):
-    #     super().__init__(data=passedData)
-
-    # def get_instance(self):
-    #     print("Creating event in the database, using validated data")
-    #     return EventDetailsSerializer(**self.validated_data).save()
 
     def create(self, validated_data):
-        print("888888888 ")
-        print(type(validated_data))
         try:
-            eventCreated = EventDetails(**validated_data)
-            eventCreated.save()
-            return eventCreated
+            event_created = EventDetails(**validated_data)
+            return event_created.save()
         except Exception as exc:
             raise exc
 
-    # def validate(self, passedData):
-    #     super().validate(passedData)
+class EventCardsSerializer(serializers.DocumentSerializer):
+    class Meta:
+        model = EventCards
+        fields = [key for key in EventCards._fields]
 
-
-
-
+    def create(self, details_obj):
+        try:
+            dates = details_obj['event_start']
+            print(type(dates))
+            card_created = EventCards()
+            card_created.save()
+            return card_created
+        except Exception as exc:
+            raise exc
 
 # class EventCardsSerializer(serializers.DocumentSerializer):
 #     class Meta:

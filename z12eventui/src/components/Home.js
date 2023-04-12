@@ -7,17 +7,14 @@ import AppBar from "@mui/material/AppBar";
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
-import Popper from '@mui/material/Popper';
-import MenuList from '@mui/material/MenuList';
+
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Notifications from '@mui/icons-material/Notifications';
-import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
+
 import Stack from '@mui/material/Stack';
-import { pages } from '../data/constants';
+import { PAGES } from '../data/constants';
 
 
 export function AppNavBar(authenticated) {
@@ -25,16 +22,6 @@ export function AppNavBar(authenticated) {
   let auth = Boolean(authenticated);
   const [openMenu, setOpenMenu] = useState(false);
   const anchorOpenMenu = useRef(null);
-
-  const handleMenuClick = () => {
-    console.log('===== Clicked');
-    setOpenMenu((prevState) => !prevState)
-  };
-
-  const handleMenuClose = () => {
-
-  }
-
   return (
     <>
       <Container
@@ -44,26 +31,17 @@ export function AppNavBar(authenticated) {
           <AppBar>
             <Toolbar>
               <Grid container>
-                <Grid item xs={3}>
+                <Grid item sx={{ display: 'flex', flexGrow: 1 }}>
                 {/* <Grid item sx={{ display: 'flex', flexGrow: 1 }}> */}
-                  <Typography ml={16} variant="h5">Z12</Typography>
+                  <Typography ml={10} variant="h5">Z12</Typography>
                 </Grid>
-                <Grid item xs={7}>
-                  <Stack direction="row" ml={10}>
-                  {pages.map((title) => (title === "Host Event") ? (
-                    <MenuItem component={RLink} to="/createEvent" key={title}>
-                      {title}
-                    </MenuItem>
-                  ) : (
-                    <MenuItem key={title}>
-                      <Typography>{title}</Typography>
-                    </MenuItem>
-                  ))}
-
+                <Grid item sx={{ display: 'flex', flexGrow: 1 }}>
+                  <Stack direction="row">
+                  {PAGES.map((title) => (<MenuItem component={RLink} to={title[1]} key={title[0]}>{title[0]}</MenuItem>))}
                   </Stack>
 
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item ml={2} xs={2}>
                   <IconButton>
                     <Notifications />
                   </IconButton>

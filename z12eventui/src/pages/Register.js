@@ -14,32 +14,40 @@ import { ThemeProvider } from '@mui/material/styles';
 import { themeOrange } from '../data/constants.js';
 import { BasicRegistrationInputs, AthleteCoachInputs } from '../components/Registration.js';
 import { apiGetAndProcess, apiPostAndProcess } from '../utils/api.js';
+import { useNavigate } from 'react-router-dom';
+import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 
-function decideNextPage(resp) {
-    if (resp.isMinor) {
-      console.log(resp);
-      redirect("/registerMinor");
-    } else {
-      console.log('---- Registration successful');
-      redirect("/home");
-    }
-  }
+
 
 export function RegisterFirstPage() {
+  const navigate = useNavigate();
+  const [opened, setOpened] = useState(false);
+  const [subMsg, setSubMsg] = useState([]);
   const [clubsList, setClubsList] = useState([]);
-  // const handleClubs = (data) => {
-  //   setClubsList(data);
-  //   console.log('-- Updating inputs select')
+  const onAlertClosed = () => {
+    setOpened(false)
+    navigate('/about');
+  };
 
-  // }
+  const launchAlert = (result) => {
+    setOpened(true);
+    if (!result.isMinor) {
+      setSubMsg({'Success': 'Registration successful!'});
+
+    } else {
+      setSubMsg({'Error': 'Registration failed: user already exists'});
+    }
+  };
+
   const clubsJson = () => {
-    apiGetAndProcess('clubs', {}, setClubsList);
-    
-  }
+    if (clubsList.length === 0) {
+      apiGetAndProcess('clubs', {}, setClubsList);
+    }
+  };
   const handleRegistrationData = (e) => {
     e.preventDefault();
     const details = new FormData(e.target);
-    apiPostAndProcess('users', {}, decideNextPage, Object.fromEntries(details));
+    apiPostAndProcess('users', {}, launchAlert, Object.fromEntries(details));
   };
   
   useEffect(() => {
@@ -48,15 +56,25 @@ export function RegisterFirstPage() {
   }, []);
 
   return (
+    <ThemeProvider theme={themeOrange}>
+
     <Container component="main" maxWidth="sm">
       <Typography variant="h3" sx={{ my: 3 }}>Register for an account</Typography>
-      <Stack component="form" onSubmit={handleRegistrationData} spacing={2}>
+      <Stack component="form" onSubmit={handleRegistrationData} spacing={2} mb={3}>
         { (clubsList.length > 0) ? (<BasicRegistrationInputs clubsList={clubsList} />) : null }
        
         <Button variant='contained' color='primary' type='submit'>Register</Button>
       </Stack>
       
     </Container>
+    <Dialog open={opened} onClose={() => navigate("/about")}>
+          <DialogTitle>{Object.keys(subMsg)[0]}</DialogTitle>
+          <DialogContent>{subMsg[Object.keys(subMsg)[0]]}</DialogContent>
+          <DialogActions>
+            <Button autoFocus onClick={() => onAlertClosed()}>OK</Button>
+          </DialogActions>
+        </Dialog>
+    </ThemeProvider>
   );
 }
 
@@ -64,19 +82,20 @@ export function RegisterSecondPage() {
   const [clubsList, setClubsList] = useState([]);
   const clubsJson = () => apiGetAndProcess('clubs', {}, setClubsList);
 
+  const decideNextPage = () => {
+    console.log('');
+  }
   const handleRegistrationData = (e) => {
     e.preventDefault();
     const details = new FormData(e.target);
     apiPostAndProcess('users', {}, decideNextPage, Object.fromEntries(details));
-  }
-  
-  function decideNextPage() {
+  };
 
-  }
   useEffect(() => {
     document.title = "Z12 Events Manager - Register II";
     clubsJson();
   }, []);
+  
   return (
     <ThemeProvider theme={themeOrange}>
       <Container spacing={3} maxWidth="sm" mb={3}>
@@ -85,7 +104,7 @@ export function RegisterSecondPage() {
           You were discovered to be minor. In order to register, you <b>must</b> have your parent/guardian's permission.
           Please ask them to fill in their registration details below.
         </Alert>
-        <Stack component="form" onSubmit={handleRegistrationData} spacing={2}>
+        <Stack component="form" onSubmit={handleRegistrationData} spacing={2} mb={3}>
           <BasicRegistrationInputs clubs={clubsList} />
           <AthleteCoachInputs />
           <Grid container mb={3}>

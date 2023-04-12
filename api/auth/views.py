@@ -55,7 +55,8 @@ def login_view(request):
     email = data['email']
     ph = PasswordHasher()
     hash = ph.hash(data['password'])
-    user = authenticate(username=email, password=hash)
+    user = User.objects.get(email=email, password=hash)
+    # user = authenticate(username=email, password=hash)
     if user is not None:
         login(request, user)
         print("---- " + User.objects(email=email, password=hash).id)

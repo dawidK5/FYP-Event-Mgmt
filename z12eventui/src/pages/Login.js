@@ -9,6 +9,8 @@ import Box from '@mui/material/Box';
 import TextField from "@mui/material/TextField";
 
 import { apiGetAndProcess, apiPostAndProcess } from "../utils/api";
+import { ThemeProvider } from "@emotion/react";
+import { themeOrange } from "../data/constants";
 
 export default function LoginPage() {
   const [csrfToken, setCsrfToken] = useState('');
@@ -43,6 +45,8 @@ export default function LoginPage() {
   }, []);
 
   return (
+    <ThemeProvider theme={themeOrange}>
+
     <Container component="main" maxWidth="xs">
       <Box maxWidth='100%'>
         <Typography sx={{ my: 3 }} variant="h4">Sign In</Typography>
@@ -72,6 +76,7 @@ export default function LoginPage() {
       </Box>
 
     </Container>
+    </ThemeProvider>
 
   );
 }

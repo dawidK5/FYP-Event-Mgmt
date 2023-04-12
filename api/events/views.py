@@ -16,11 +16,12 @@ def manage_events(request):
         print(request.data)
         print(request.FILES)
         try:
-            ed = EventDetailsSerializer().create(details_obj)
-            return Response({'success': str(ed)})
+            evd = EventDetailsSerializer().create(details_obj)
+            ec = EventCardsSerializer().create(evd)
+            return Response({"Success": "Event has been registered on the system"}, status=201)
         except Exception as exc:
             print(exc)
-            return Response({'error': str(exc)}, status=400)
+            return Response({"Error": "Event not registered: " + str(exc)}, status=400)
 
 
         # ed = EventDetailsSerializer(details_obj)
@@ -48,8 +49,10 @@ def list_event_categories(request):
 @api_view(['GET'])
 @permission_classes([])
 @renderer_classes([JSONRenderer])
-def list_event_details(request):
-    return Response(EventDetails.objects[0])
+@parser_classes([JSONParser])
+def list_event_details(request, event_id):
+    serializer = EventDetailsSerializer(EventDetails.objects.get(id=event_id), many=False)
+    return Response(serializer.data)
 
 @api_view(['POST'])
 @permission_classes([])
@@ -72,7 +75,11 @@ def list_table_headings(request):
 # def list_(request):
 #     return Response([item.value for item in EventCategory])
 
-
+@api_view(['GET'])
+@permission_classes([])
+@renderer_classes([JSONRenderer])
+def is_event_title_unique(request):
+    return Response(EventDetails.objects().get(title=request.data))
 
 
 
