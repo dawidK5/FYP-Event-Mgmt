@@ -116,6 +116,7 @@ export function CreateEventBasic() {
     setOpened(true);
     setSubMsg(result);
   };
+  const [eventId, setEventId] = useState('');
   const uploadEvent = (data) => {
     console.log(data);
     apiPostAndProcess('events', {}, launchAlert, data);
@@ -168,7 +169,10 @@ export function CreateEventBasic() {
           <DialogTitle>{Object.keys(subMsg)[0]}</DialogTitle>
           <DialogContent>{subMsg[Object.keys(subMsg)[0]]}</DialogContent>
           <DialogActions>
-            <Button autoFocus onClick={() => setOpened(false)}>OK</Button>
+            <Button autoFocus onClick={() => {
+              setOpened(false);
+              navigate('/home');
+            }}>OK</Button>
           </DialogActions>
         </Dialog>
       </ThemeProvider>

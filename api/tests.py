@@ -33,12 +33,3 @@ class EventsTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(EventDetails.objects.count(), 1)
         self.assertEqual(EventDetails.objects.get().event_start.year, 2023)
-
-    # factory = APIRequestFactory()
-    # user = User.objects.get(username='olivia')
-    # view = AccountDetail.as_view()
-
-    # # Make an authenticated request to the view...
-    # request = factory.get('/accounts/django-superstars/')
-    # force_authenticate(request, user=user)
-    # response = view(request)

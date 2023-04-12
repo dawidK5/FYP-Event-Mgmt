@@ -1,7 +1,7 @@
 [
     {
         "table_name": "Junior",
-        "gender": "M",
+        "gender": "Men",
         "distance": "2000m",
         "age_categories": [
             "J14",
@@ -20,7 +20,7 @@
     },
     {
         "table_name": "Junior",
-        "gender": "M",
+        "gender": "Men",
         "distance": "6000m",
         "age_categories": [
             "J14",
@@ -39,7 +39,7 @@
     },
     {
         "table_name": "Junior",
-        "gender": "F",
+        "gender": "Women",
         "distance": "2000m",
         "age_categories": [
             "J14",
@@ -58,7 +58,7 @@
     },
     {
         "table_name": "Junior",
-        "gender": "F",
+        "gender": "Women",
         "distance": "6000m",
         "age_categories": [
             "J14",
@@ -77,7 +77,7 @@
     },
     {
         "table_name": "Youth",
-        "gender": "M",
+        "gender": "Men",
         "distance": "2000m",
         "boat_classes": [
             "1X",
@@ -98,7 +98,7 @@
     },
     {
         "table_name": "Youth",
-        "gender": "F",
+        "gender": "Women",
         "distance": "2000m",
         "boat_classes": [
             "1X",
@@ -119,7 +119,7 @@
     },
     {
         "table_name": "Youth",
-        "gender": "M",
+        "gender": "Men",
         "distance": "6000m",
         "boat_classes": [
             "1X",
@@ -140,7 +140,7 @@
     },
     {
         "table_name": "Youth",
-        "gender": "F",
+        "gender": "Women",
         "distance": "6000m",
         "boat_classes": [
             "1X",
@@ -160,8 +160,8 @@
         ]
     },
     {
-        "table_name": "Master",
-        "gender": "M",
+        "table_name": "Menaster",
+        "gender": "Men",
         "distance": "2000m",
         "boat_classes": [
             "1X",
@@ -180,13 +180,13 @@
             "C",
             "D",
             "E",
-            "F",
+            "Women",
             "G"
         ]
     },
     {
-        "table_name": "Master",
-        "gender": "F",
+        "table_name": "Menaster",
+        "gender": "Women",
         "distance": "2000m",
         "boat_classes": [
             "1X",
@@ -205,13 +205,13 @@
             "C",
             "D",
             "E",
-            "F",
+            "Women",
             "G"
         ]
     },
     {
-        "table_name": "Master",
-        "gender": "M",
+        "table_name": "Menaster",
+        "gender": "Men",
         "distance": "6000m",
         "boat_classes": [
             "1X",
@@ -230,13 +230,13 @@
             "C",
             "D",
             "E",
-            "F",
+            "Women",
             "G"
         ]
     },
     {
-        "table_name": "Master",
-        "gender": "F",
+        "table_name": "Menaster",
+        "gender": "Women",
         "distance": "6000m",
         "boat_classes": [
             "1X",
@@ -255,7 +255,7 @@
             "C",
             "D",
             "E",
-            "F",
+            "Women",
             "G"
         ]
     }

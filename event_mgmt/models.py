@@ -33,15 +33,6 @@ class EventCategory(Enum):
     Z12_FEMALE = "Z12 Female Challenge"
 
 class BoatClasses(Enum):
-    # sweep
-    # PAIR = "2-"
-    # FOUR = "4-"
-
-    # COXED_PAIR = "2+"
-    # COXED_FOUR = "4+"
-    # COXED_EIGHT = "8+"
-    
-    # scull
     SINGLE = "1X"
     DOUBLE = "2X"
     PAIR = "2-"
@@ -88,21 +79,6 @@ class Ages(Enum):
     F = "F"
     G = "G"
 
-# class AgeCategories(Enum):
-#     age_band = fields.EnumField(AgeBand, blank=False)
-
-# class WeightCategories(EmbeddedDocument):
-#     weight = fields.EnumField(Weight)
-    # age_categories = fields.ListField(EmbeddedDocument())
-    
-
-# class GenderCategories(EmbeddedDocument):
-#     gender = fields.EnumField(Gender, blank=False)
-#     weight_categories = fields.ListField(fields.EmbeddedDocumentField(WeightCategories))
-
-# class AllowedParticipants(EmbeddedDocument):
-#     gender = fields.StringField(max_length=2)
-
 class FeesField(EmbeddedDocument):
     amount = fields.IntField(default=0)
     currency = fields.StringField(maxLength=4, blank=False)
@@ -111,24 +87,15 @@ class EventDetails(Document):
     title = fields.StringField(blank=False, max_length=200, unique=True)
     description = fields.StringField(blank=False)
     host_id = fields.StringField(blank=False)
-    # event_type = fields.StringField(choices=[[opt.value for opt in EventType]], blank=False, default=EventType.GROUP)
     series_type = fields.StringField(choices=[opt.value for opt in SeriesType], blank=False)
     event_category = fields.StringField(choices=[opt.value for opt in EventCategory], blank=False)
     location = fields.StringField(blank=False)
     country = fields.StringField(blank=False)
-    # EmbeddedDocumentField(Location, blank=False)
     reg_start = fields.DateTimeField(blank=False)
     reg_end = fields.DateTimeField(blank=False)
     event_start = fields.DateTimeField(blank=False)
     event_end = fields.DateTimeField(blank=False)
     fees = fields.DictField(blank=False)
-    # imagename = fields.FileField(upload_to=None, blank=True)
-    # rowers_limit = fields.IntField(default=24, blank=False)
-    # category = fields.EnumField(EventCategory, blank=False)
-    # all_boat_classes = fields.ListField(fields.EnumField(BoatClass, blank=False))
-    # all_distances = fields.ListField(fields.StringField(max_length=20))
-    # gender_categories = fields.ListField(fields.EmbeddedDocumentField(GenderCategories, blank=False))
-    # allowed_participants = fields.EmbeddedDocumentField(AllowedParticipants, blank=False)
     allowed_participants = fields.DictField(blank=False) 
     
     
@@ -137,7 +104,7 @@ class EventCards(Document):
     event_dates = fields.StringField(blank=False)
     venue_name = fields.StringField(blank=False)
     country = fields.StringField(blank=False)
-    cover_path = fields.URLField(blank=False)
+    cover_path = fields.StringField(blank=False)
 
 
 class Clubs(Document):
@@ -152,11 +119,6 @@ class User(BaseUser, Document):
     class Meta:
         app_label = "event_mgmt"
         abstract = False
-
-    # def set_password(self, password):
-        # django bug workaround
-        
-        # make_password(password)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["password"]

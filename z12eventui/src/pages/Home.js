@@ -19,7 +19,7 @@ export default function Home() {
   const eventsJson = () => apiGetAndProcess('events', null, setEventCards);
 
   useEffect(() => {
-    document.title = "Z12 Events Manager - All Events";
+    document.title = "Z12 Events Manager";
     eventsJson();
 
   }, []);
@@ -31,6 +31,7 @@ export default function Home() {
         <Container>
           <Typography variant='h3' align='center' mt={4} mb={3}>All Events</Typography>
           <Grid container spacing={3}>
+            {eventCards.map((data)=> <EventCard data={data}/> )}   
           </Grid>
         </Container>
       </ThemeProvider>

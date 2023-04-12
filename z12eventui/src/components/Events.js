@@ -107,13 +107,8 @@ export function AgeGroupTable({ tableDetails, formDetails, setFormDetails, renTa
   const gender = tableDetails.gender;
   const distance = tableDetails.distance;
   const numWeights = tableDetails.weight_categories.length;
-  // const numBoats = tableDetails.boat_classes.length;
   const numColsPerRow = tableDetails.boat_classes.length * tableDetails.weight_categories.length;
-  // const numColsTotal = numColsPerRow * tableDetails.age_categories.length;
-
-  console.log("7688");
-  console.log(chbVals);
-
+  
   const appendToForm = (e, checkboxInd) => {
   
     const row = (checkboxInd / numColsPerRow) | 0;
