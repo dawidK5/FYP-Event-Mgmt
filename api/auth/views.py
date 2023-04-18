@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view, renderer_classes, permission_cla
 from django.contrib.auth import login, authenticate
 from argon2 import PasswordHasher
 
-from event_mgmt.models import User
+from event_mgmt.models import EventsUser
 
 
 
@@ -18,7 +18,7 @@ from event_mgmt.models import User
 @renderer_classes([JSONRenderer])
 def get_csrf_token(request):
     token = get_token(request)
-    print(str(authenticate(request)))
+    # print(str(authenticate(request)))
     print("===== Requesting new CSRF session cookie: " + token)
     return Response(headers={'Set-Cookie': 'X-CSRFToken={}; HttpOnly'.format(token) })
 
@@ -26,11 +26,11 @@ def get_csrf_token(request):
 @renderer_classes([JSONRenderer])
 @permission_classes([])
 def get_session(request):
-    print(str(request.GET))
+    # print(str(request.GET))
     if not request.session.session_key:
         session_key = request.session.create()
-        print("==== session_key: " + session_key)
-        request.session['authenticated'] = False
+        print("==== session_key in getSession: " + session_key)
+        # request.session['authenticated'] = False
         return Response(session_key)
 
 @api_view(['POST'])
@@ -38,25 +38,24 @@ def get_session(request):
 @permission_classes([])
 @ensure_csrf_cookie
 def login_view(request):
+    if not request.session.session_key:
+        session_key = request.session.create()
     data = request.data
-    if len(data['email']) < 3 or len(data['password']) < 1:
-        return ParseError('User credentials malformed')
+    if len(data['email']) < 5 or len(data['password']) < 6:
+        return ParseError('EventsUser credentials malformed')
     email = data['email']
     ph = PasswordHasher()
     hash = ph.hash(data['password'])
-    user = User.objects.get(email=email, password=hash)
+    creds = {'username': email, 'password': hash}
+    user = authenticate(request, **creds)
+    # user = EventsUser.objects.get(email=email)
     if user is not None:
+        # authenticate(request,email=email, password=data['password'])
         login(request, user)
-        print("---- " + User.objects(email=email, password=hash).id)
-        request.session['user_id'] = User.objects(email=email, password=hash).id
-        return Response('Session set: {}, for user {}'.format(request.session.session_key, request.session.get('user_id', 'error')))
+        # print("---- " + EventsUser.objects(email=email, password=hash).id)
+        # request.session['user_id'] = EventsUser.objects(email=email, password=hash).id
+        return Response('Logged in: {}, for user {}'.format(request.session.session_key, request.session.get('user_id', 'error')))
     raise ValidationError('Wrong email or password')
-
-
-
-
-
-
 
 
 

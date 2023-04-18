@@ -1,0 +1,26 @@
+services:
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodbdata:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "${MONGO_USERNAME}"
+      MONGO_INITDB_ROOT_PASSWORD: "${MONGO_PASSWORD}"
+
+  backend:
+    image: web:1.1
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    environment:
+      MONGO_USERNAME: "${MONGO_USERNAME}"
+      MONGO_PASSWORD: "${MONGO_PASSWORD}"
+    depends_on:
+      - db
+
+volumes:
+  mongodbdata: {}

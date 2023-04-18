@@ -1,6 +1,6 @@
 # from django.contrib import admin
-# from .models import *
-# # from django_mongoengine.mongo_admin import register as reg
 
-# admin.register(EventDetails)
-# admin.register(User)
+import django_mongoengine.mongo_admin as djm_admin
+from event_mgmt.models import EventsUser
+# # admin.register(EventDetails)
+djm_admin.register(EventsUser)

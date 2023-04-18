@@ -38,35 +38,33 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
-
-    # 'django_mongoengine.mongo_auth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    # 'django.contrib.sessions',
     'django.contrib.messages',
     'rest_framework',
-    'rest_framework_mongoengine',
+    'rest_framework.authtoken',
+    # 'rest_framework_mongoengine',
+    # 'mongoengine',
+    'django_mongoengine.mongo_auth',
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
     'event_mgmt',
     'api',
     # 'corsheaders',
-    # 'mongoengine',
-    # 'django_mongoengine.mongo_auth',
-    # 'django_mongoengine.mongo_auth.backends',
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    # 'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    # 'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
@@ -95,16 +93,6 @@ WSGI_APPLICATION = 'z12event.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.dummy',
-#         # 'ENGINE': '',
-#         # 'NAME': '',
-#         # 'ENGINE': 'django.db.backends.sqlite3',
-#         # 'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 
 # Password validation
@@ -139,7 +127,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-# STATIC_ROOT = BASE_DIR / 'z12eventui/build/static'
+STATIC_ROOT = BASE_DIR / 'z12eventui/build'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,  'z12eventui/build/static'),
@@ -149,15 +137,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
+# DEFAULT_AUTO_FIELD = 'event_mgmt.field.ObjectIdField'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# AUTHENTICATION_BACKENDS = [
-#     'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
-# ]
-# AUTH_USER_MODEL = 'mongo_auth.MongoUser'
-# MONGOENGINE_USER_DOCUMENT = 'mongoengine.django.auth.User'
-# SESSION_ENGINE = 'mongoengine.django.sessions'
-# SESSION_SERIALIZER = 'mongoengine.django.sessions.BSONSerializer'
+AUTHENTICATION_BACKENDS = [
+    'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
+]
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost",
@@ -165,12 +151,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000"
 ]
-# CORS_ORIGIN_WHITELIST = (
-#     'http://localhost',
-#     'http://localhost:3000',
-#     'http://localhost:8000',
-#     'http://127.0.0.1:8000'
-# )
 
 CORS_ALLOW_HEADERS = [
     'Set-Cookie',
@@ -179,47 +159,40 @@ CORS_ALLOW_HEADERS = [
 ]
 
 CSRF_COOKIE_HTTPONLY = False
-SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_HTTPONLY = False
 
 CSRF_COOKIE_SAMESITE = 'Strict'
 SESSION_COOKIE_SAMESITE = 'Strict'
 
 
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 5,
-    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
-    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.SessionAuthentication', 'rest_framework.authentication.BasicAuthentication'],
-    'DEFAULT_PARSER_CLASSES': ['rest_framework.parsers.JSONParser']
-}
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
-#         'NAME': 'eventmgmt',
-#         'name': 'eventmgmt',
-#         'host': 'localhost:27017',
-#         'password': 'rowing2023',
-#         'username': 'z12Admin',
-#         'tz_aware': True,  # if you using timezones in django (USE_TZ = True)
-#     },
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+#     'PAGE_SIZE': 5,
+#     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.SessionAuthentication',
+#         'rest_framework.authentication.BasicAuthentication'
+#     ],
+#     'DEFAULT_PARSER_CLASSES': ['rest_framework.parsers.JSONParser']
 # }
+
 
 MONGODB_DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.dummy',
+        # 'ENGINE': 'django.db.backends.dummy',
         'name': 'eventmgmt',
-        'host': 'localhost:27017',
-        'password': 'rowing2023',
-        'username': 'z12Admin',
+        'host': getattr(os.environ, 'MONGO_HOST', 'localhost')+':'+getattr(os.environ, 'MONGO_PORT', '27017'),
+        'password': getattr(os.environ, 'MONGO_PASSWORD', 'rowing2023'),
+        'username': getattr(os.environ, 'MONGO_USERNAME', 'z12Admin'),
         'tz_aware': True,  # if you using timezones in django (USE_TZ = True)
     },
 }
 # for auth
-# AUTH_USER_MODEL = 'mongo_auth.MongoUser'
-# MONGOENGINE_USER_DOCUMENT = 'event_mgmt.User'
+AUTH_USER_MODEL = 'mongo_auth.MongoUser'
+MONGOENGINE_USER_DOCUMENT = 'event_mgmt.models.MinimalUser'
 
 DATABASES = MONGODB_DATABASES
 SESSION_ENGINE = 'django_mongoengine.sessions'
 SESSION_SERIALIZER = 'django_mongoengine.sessions.BSONSerializer'
 
+PASSWORD_HASHERS = ["django.contrib.auth.hashers.Argon2PasswordHasher"]

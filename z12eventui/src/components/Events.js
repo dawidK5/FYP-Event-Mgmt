@@ -128,19 +128,15 @@ export function AgeGroupTable({ tableDetails, formDetails, setFormDetails, renTa
       if (!(ptr[tree[i]])) {
         ptr[tree[i]] = {};
       }
-
       ptr = ptr[tree[i]];
     }
     if (!jbr[gender][distance][age][boat_class]) {
       ptr[tree[tree.length - 2]] = [];
-
     }
     if (e.target.checked) {
       ptr[tree[tree.length - 2]].push(tree[tree.length - 1]);
-
     } else {
       jbr[gender][distance][age][boat_class] = jbr[gender][distance][age][boat_class].filter(item => item !== tree[tree.length - 1]);
-
     }
     console.log(JSON.stringify(jbr));
 

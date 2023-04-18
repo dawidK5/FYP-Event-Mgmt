@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('', TemplateView.as_view(template_name='index.html')),
-    re_path(r'^[a-zA-Z0-9]+[/]*$', TemplateView.as_view(template_name='index.html'))
+    # re_path(r'^[a-zA-Z0-9]+[/]*$', TemplateView.as_view(template_name='index.html'))
 ]

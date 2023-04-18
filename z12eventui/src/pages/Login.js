@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link as RLink } from 'react-router-dom';
+import { Link as RLink, useNavigate } from 'react-router-dom';
 
 import Container from "@mui/material/Container";
 import Typography from '@mui/material/Typography';
@@ -15,22 +15,21 @@ import { themeOrange } from "../data/constants";
 export default function LoginPage() {
   const [csrfToken, setCsrfToken] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
-
+  const navigate = useNavigate();
   const loadCsrfToken = () => {
     const tokenName = 'csrftoken='
     const indexCookie = document.cookie.indexOf(tokenName)
     if (indexCookie > -1) {
       console.log('csrftoken present');
-      
       console.log(']]]] CSRF: ' + document.cookie.substring(indexCookie, document.cookie.indexOf(';', indexCookie)));
     } else {
       apiGetAndProcess('auth/getToken', {'credentials': 'include'}, setCsrfToken);
     }
-    
   };
-  function onLoginResponse(data) {
+  const onLoginResponse = (data) => {
     console.log('==== Login reponse:' + data);
     setLoggedIn(true);
+    navigate('/about');
   }
 
   function handleSubmission(e) {

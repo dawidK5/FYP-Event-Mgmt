@@ -1,19 +1,52 @@
+from bson.objectid import ObjectId
+from os import environ
 from enum import Enum
-from mongoengine import Document, EmbeddedDocument, fields
-# from mongoengine.document import *
-# from mongoengine.fields import *
-# from rest_framework_mongoengine import fields
-# from django.conf import settings
-from mongoengine import connect, get_connection
-# from mongomock import *
-# from mongoengine.connection import get_db
-from django_mongoengine.mongo_auth.models import MongoUserManager, BaseUser
 
-connect(host="mongodb://z12Admin:rowing2023@localhost:27017/?authMechanism=DEFAULT", db="eventmgmt")
-# db = get_db()
-# connect('eventmgmt', host='mongodb://z12Admin:rowing2023@localhost:27017/?authMechanism=DEFAULT', mongo_client_class=MongoClient)
-db = get_connection()
-# from django.contrib.auth.models import User as DUser
+from django_mongoengine import document as dmdocument, fields as dmfields
+import django_mongoengine.mongo_auth.models as dmmodels
+from mongoengine import connect, get_connection
+
+
+connect(host="mongodb://"+ getattr(environ, 'MONGO_USERNAME', 'z12Admin') + ":" + getattr(environ, 'MONGO_PASSWORD', 'rowing2023') + "@"+ getattr(environ, 'MONGO_HOST', 'localhost')+':'+getattr(environ, 'MONGO_PORT', '27017')+"/?authMechanism=DEFAULT", db="eventmgmt")
+
+class MinimalUser(dmmodels.AbstractUser, dmdocument.Document):
+    class Meta:
+        app_label = "event_mgmt"
+        abstract = True
+    #     allow_inheritance = True
+    
+    meta = {
+        'allow_inheritance': True,
+    }
+    _meta = {'pk' : { 'to_python': lambda ob: int.from_bytes(ObjectId.binary(ob)) }}
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["usename", "password"]
+    username = dmfields.StringField(blank=True)
+    email = dmfields.StringField(unique=True, blank=False)
+    password = dmfields.StringField(blank=False)
+
+MinimalUser._meta.pk.to_python = ObjectId
+
+# MinimalUser._meta.pk.to_python = lambda ob: int.from_bytes(ObjectId.binary(ob))
+
+class EventsUser(MinimalUser):
+    class Meta:
+        app_label = "event_mgmt"
+        abstract = False
+        proxy = True
+    
+    # USERNAME_FIELD = "email"
+    # REQUIRED_FIELDS = ["username", "password"]
+    # username = dmfields.StringField(blank=True)
+    USERNAME_FIELD = "email"
+    name = dmfields.StringField(blank=False)
+    # email = dmfields.StringField(unique=True, blank=False)
+    phone = dmfields.StringField(blank=False)
+    dob = dmfields.DateField(blank=False)
+    club = dmfields.StringField(blank=True)
+    bank_details = dmfields.ListField(dmfields.DictField(blank=True), blank=True)
+
+# EventsUser._meta.pk.to_python = bson.ObjectId
 
 class EventType(Enum):
     INDIVIDUAL = "Individual"
@@ -37,13 +70,6 @@ class BoatClasses(Enum):
     DOUBLE = "2X"
     PAIR = "2-"
     QUAD = "4X"
-
-
-class Location(EmbeddedDocument):
-    country = fields.StringField(blank=False, max_length=160)
-    region = fields.StringField(blank=False, max_length=160)
-    venue_name = fields.StringField(blank=False, max_length=220)
-    coordinates = fields.StringField(blank=False, max_length=100)
 
 class Genders(Enum):
     MALE = "Men"
@@ -79,71 +105,40 @@ class Ages(Enum):
     F = "F"
     G = "G"
 
-class FeesField(EmbeddedDocument):
-    amount = fields.IntField(default=0)
-    currency = fields.StringField(maxLength=4, blank=False)
+class EventDetails(dmdocument.Document):
+    title = dmfields.StringField(blank=False, max_length=200, unique=True)
+    description = dmfields.StringField(blank=False)
+    host_id = dmfields.StringField(blank=False)
+    series_type = dmfields.StringField(choices=[opt.value for opt in SeriesType], blank=False)
+    event_category = dmfields.StringField(choices=[opt.value for opt in EventCategory], blank=False)
+    location = dmfields.StringField(blank=False)
+    country = dmfields.StringField(blank=False)
+    reg_start = dmfields.DateTimeField(blank=False)
+    reg_end = dmfields.DateTimeField(blank=False)
+    event_start = dmfields.DateTimeField(blank=False)
+    event_end = dmfields.DateTimeField(blank=False)
+    fees = dmfields.DictField(blank=False)
+    allowed_participants = dmfields.DictField(blank=False) 
 
-class EventDetails(Document):
-    title = fields.StringField(blank=False, max_length=200, unique=True)
-    description = fields.StringField(blank=False)
-    host_id = fields.StringField(blank=False)
-    series_type = fields.StringField(choices=[opt.value for opt in SeriesType], blank=False)
-    event_category = fields.StringField(choices=[opt.value for opt in EventCategory], blank=False)
-    location = fields.StringField(blank=False)
-    country = fields.StringField(blank=False)
-    reg_start = fields.DateTimeField(blank=False)
-    reg_end = fields.DateTimeField(blank=False)
-    event_start = fields.DateTimeField(blank=False)
-    event_end = fields.DateTimeField(blank=False)
-    fees = fields.DictField(blank=False)
-    allowed_participants = fields.DictField(blank=False) 
+class EventCards(dmdocument.Document):
+    event_title = dmfields.StringField(blank=False)
+    event_dates = dmfields.StringField(blank=False)
+    venue_name = dmfields.StringField(blank=False)
+    country = dmfields.StringField(blank=False)
+    cover_path = dmfields.StringField(blank=False)
+
+class Clubs(dmdocument.Document):
+    name = dmfields.StringField(max_length=200, blank=False)
+    manager = dmfields.ObjectIdField()
+    coaches = dmfields.ListField(dmfields.ObjectIdField())
+    atheletes = dmfields.ListField(dmfields.ObjectIdField())
     
-    
-class EventCards(Document):
-    event_title = fields.StringField(blank=False)
-    event_dates = fields.StringField(blank=False)
-    venue_name = fields.StringField(blank=False)
-    country = fields.StringField(blank=False)
-    cover_path = fields.StringField(blank=False)
-
-
-class Clubs(Document):
-    name = fields.StringField(max_length=200, blank=False)
-    manager = fields.ObjectIdField()
-    coaches = fields.ListField(fields.ObjectIdField())
-    atheletes = fields.ListField(fields.ObjectIdField())
-    
-class User(BaseUser, Document):
-    objects = MongoUserManager()
-
-    class Meta:
-        app_label = "event_mgmt"
-        abstract = False
-
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["password"]
-    name = fields.StringField(blank=False)
-    email = fields.StringField(unique=True, blank=False)
-    phone = fields.StringField(blank=False)
-    password = fields.StringField(blank=False)
-    active = fields.BooleanField(blank=True)
-    image = fields.StringField(blank=True)
-    dob = fields.DateField(blank=False)
-    weight = fields.LongField(blank=True)
-    arm_span = fields.FloatField(blank=True)
-    club = fields.StringField(blank=True)
-    category = fields.StringField(blank=True)
-    location = fields.StringField(blank=True)
-    bank_details = fields.ListField(fields.DictField(blank=True), blank=True)
-    isAdmin = fields.BooleanField(blank=True)
-    isMinor = fields.BooleanField(blank=True)
-
-class ValidCategories(Document):
-    table_name = fields.StringField(blank=False)
-    gender = fields.EnumField(Genders, blank=False)
-    distance = fields.EnumField(Distances, blank=False)
-    age_categories = fields.ListField(fields.EnumField(Ages), blank=False)
-    boat_classes = fields.ListField(fields.EnumField(BoatClasses), blank=False)
-    weight_categories = fields.ListField(fields.EnumField(Weights), blank=False)
+class ValidCategories(dmdocument.Document):
+    table_name = dmfields.StringField(blank=False)
+    gender = dmfields.EnumField(Genders, blank=False)
+    distance = dmfields.EnumField(Distances, blank=False)
+    age_categories = dmfields.ListField(dmfields.EnumField(Ages), blank=False)
+    boat_classes = dmfields.ListField(dmfields.EnumField(BoatClasses), blank=False)
+    weight_categories = dmfields.ListField(dmfields.EnumField(Weights), blank=False)
 
 
