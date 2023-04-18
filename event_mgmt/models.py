@@ -141,4 +141,5 @@ class ValidCategories(dmdocument.Document):
     boat_classes = dmfields.ListField(dmfields.EnumField(BoatClasses), blank=False)
     weight_categories = dmfields.ListField(dmfields.EnumField(Weights), blank=False)
 
-
+class Images(dmdocument.Document):
+    image = dmfields.ImageField(upload_to="img")

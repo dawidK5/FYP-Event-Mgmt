@@ -2,7 +2,7 @@
 
 Date : 2023-03-22 14:43:38
 
-Directory c:\\Users\\admin\\vscodeprojects\\FYP\\Z12v0events\\projectv1\\z12event\\z12eventui\\src
+Directory c:\\Users\\admin\\vscodeprojects\\FYP\\Z12v0events\\projectv1\\z12event\\ui\\src
 
 Total : 5 files,  -17427 codes, -23 comments, -37 blanks, all -17487 lines
 

@@ -12,6 +12,7 @@ export const themeOrange = createTheme({
     }
   });
 export const PAGES = [['About', '/about'],['All Events', '/'], ['Results', '#'], ['Host Event', '/createEvent'], ['My Profile', '#'], ['My Coaches', '#'], ['My Payments', '#']];
+// export const PAGES = [['About', '/about'],['All Events', '/'], ['Results', '#'], ['Host Event', '/createEvent'], ['My Profile', '#']];
 
 // export const cardImages = ['..\public\logo192.png']
 export const eventsCards = ['National Series III - 2k', 'Mens Offshore Rowing']

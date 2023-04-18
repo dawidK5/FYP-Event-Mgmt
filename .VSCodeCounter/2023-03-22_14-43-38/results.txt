@@ -1,5 +1,5 @@
 Date : 2023-03-22 14:43:38
-Directory : c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src
+Directory : c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src
 Total : 19 files,  1352 codes, 115 comments, 198 blanks, all 1665 lines
 
 Languages
@@ -30,24 +30,24 @@ Files
 +------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
 | filename                                                                                                   | language   | code       | comment    | blank      | total      |
 +------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\App.css                    | CSS        |         33 |          0 |          6 |         39 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\App.js                     | JavaScript |         24 |         36 |          7 |         67 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\App.test.js                | JavaScript |          7 |          0 |          2 |          9 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\components\Events.js       | JavaScript |        268 |         22 |         50 |        340 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\components\Home.js         | JavaScript |         61 |          6 |         13 |         80 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\components\Registration.js | JavaScript |         72 |          2 |          5 |         79 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\data\constants.js          | JavaScript |        211 |          0 |          0 |        211 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\data_model.json            | JSON       |        190 |          7 |         21 |        218 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\index.css                  | CSS        |         12 |          0 |          2 |         14 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\index.js                   | JavaScript |         13 |         13 |          5 |         31 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\logo.svg                   | XML        |          1 |          0 |          0 |          1 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\pages\Events.js            | JavaScript |        217 |         21 |         42 |        280 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\pages\Home.js              | JavaScript |         34 |          0 |          9 |         43 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\pages\Login.js             | JavaScript |         64 |          0 |         13 |         77 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\pages\Register.js          | JavaScript |         85 |          4 |         15 |        104 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\reportWebVitals.js         | JavaScript |         12 |          0 |          2 |         14 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\setupTests.js              | JavaScript |          1 |          4 |          1 |          6 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\styles\theme\index.js      | JavaScript |         13 |          0 |          2 |         15 |
-| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\z12eventui\src\utils\api.js               | JavaScript |         34 |          0 |          3 |         37 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\App.css                    | CSS        |         33 |          0 |          6 |         39 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\App.js                     | JavaScript |         24 |         36 |          7 |         67 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\App.test.js                | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\components\Events.js       | JavaScript |        268 |         22 |         50 |        340 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\components\Home.js         | JavaScript |         61 |          6 |         13 |         80 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\components\Registration.js | JavaScript |         72 |          2 |          5 |         79 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\data\constants.js          | JavaScript |        211 |          0 |          0 |        211 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\data_model.json            | JSON       |        190 |          7 |         21 |        218 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\index.css                  | CSS        |         12 |          0 |          2 |         14 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\index.js                   | JavaScript |         13 |         13 |          5 |         31 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\logo.svg                   | XML        |          1 |          0 |          0 |          1 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\pages\Events.js            | JavaScript |        217 |         21 |         42 |        280 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\pages\Home.js              | JavaScript |         34 |          0 |          9 |         43 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\pages\Login.js             | JavaScript |         64 |          0 |         13 |         77 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\pages\Register.js          | JavaScript |         85 |          4 |         15 |        104 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\reportWebVitals.js         | JavaScript |         12 |          0 |          2 |         14 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\setupTests.js              | JavaScript |          1 |          4 |          1 |          6 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\styles\theme\index.js      | JavaScript |         13 |          0 |          2 |         15 |
+| c:\Users\admin\vscodeprojects\FYP\Z12v0events\projectv1\z12event\ui\src\utils\api.js               | JavaScript |         34 |          0 |          3 |         37 |
 | Total                                                                                                      |            |      1,352 |        115 |        198 |      1,665 |
 +------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

@@ -33,22 +33,22 @@ Total : 57 files,  19723 codes, 199 comments, 370 blanks, all 20292 lines
 | api\\users | 2 | 42 | 11 | 10 | 63 |
 | event_mgmt | 6 | 36 | -1 | 3 | 38 |
 | z12event | 5 | 125 | 106 | 56 | 287 |
-| z12eventui | 33 | 19,289 | 78 | 231 | 19,598 |
-| z12eventui (Files) | 3 | 17,420 | 0 | 35 | 17,455 |
-| z12eventui\\build | 7 | 46 | 4 | 1 | 51 |
-| z12eventui\\build (Files) | 3 | 42 | 0 | 1 | 43 |
-| z12eventui\\build\\static | 4 | 4 | 4 | 0 | 8 |
-| z12eventui\\build\\static\\css | 1 | 1 | 1 | 0 | 2 |
-| z12eventui\\build\\static\\js | 2 | 2 | 3 | 0 | 5 |
-| z12eventui\\build\\static\\media | 1 | 1 | 0 | 0 | 1 |
-| z12eventui\\public | 2 | 45 | 23 | 2 | 70 |
-| z12eventui\\src | 21 | 1,778 | 51 | 193 | 2,022 |
-| z12eventui\\src (Files) | 9 | 345 | 43 | 46 | 434 |
-| z12eventui\\src\\components | 3 | 422 | 7 | 66 | 495 |
-| z12eventui\\src\\data | 2 | 474 | 1 | 1 | 476 |
-| z12eventui\\src\\pages | 5 | 490 | 0 | 75 | 565 |
-| z12eventui\\src\\styles | 1 | 13 | 0 | 2 | 15 |
-| z12eventui\\src\\styles\\theme | 1 | 13 | 0 | 2 | 15 |
-| z12eventui\\src\\utils | 1 | 34 | 0 | 3 | 37 |
+| ui | 33 | 19,289 | 78 | 231 | 19,598 |
+| ui (Files) | 3 | 17,420 | 0 | 35 | 17,455 |
+| ui\\build | 7 | 46 | 4 | 1 | 51 |
+| ui\\build (Files) | 3 | 42 | 0 | 1 | 43 |
+| ui\\build\\static | 4 | 4 | 4 | 0 | 8 |
+| ui\\build\\static\\css | 1 | 1 | 1 | 0 | 2 |
+| ui\\build\\static\\js | 2 | 2 | 3 | 0 | 5 |
+| ui\\build\\static\\media | 1 | 1 | 0 | 0 | 1 |
+| ui\\public | 2 | 45 | 23 | 2 | 70 |
+| ui\\src | 21 | 1,778 | 51 | 193 | 2,022 |
+| ui\\src (Files) | 9 | 345 | 43 | 46 | 434 |
+| ui\\src\\components | 3 | 422 | 7 | 66 | 495 |
+| ui\\src\\data | 2 | 474 | 1 | 1 | 476 |
+| ui\\src\\pages | 5 | 490 | 0 | 75 | 565 |
+| ui\\src\\styles | 1 | 13 | 0 | 2 | 15 |
+| ui\\src\\styles\\theme | 1 | 13 | 0 | 2 | 15 |
+| ui\\src\\utils | 1 | 34 | 0 | 3 | 37 |
 
 [Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)

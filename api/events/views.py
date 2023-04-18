@@ -22,9 +22,13 @@ def manage_events(request):
             print(exc)
             return Response({"Error": "Event not registered: " + str(exc)}, status=400)
     if request.method == 'GET':
+        
         cards = [card for card in EventCards.objects.as_pymongo()]
-        print(cards)
-        return Response(json.loads(cards))
+        # print(cards)
+        for card in cards:
+            card['_id'] = str(card['_id'])
+            print(str(card) + ':')
+        return Response(cards)
     return Response({'error': 'Wrong method: POST expected'})
 
 @api_view(['GET'])

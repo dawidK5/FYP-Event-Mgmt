@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { COUNTRIES } from '../data/constants';
 
 import IconButton from '@mui/material/IconButton';
-
+import { PhotoCamera } from '@mui/icons-material';
 import { Alert, Checkbox, Table, TableBody, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import TableCell from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
@@ -18,6 +18,7 @@ import { AddCircleOutline } from '@mui/icons-material';
 
 import { useEffect, useState } from 'react';
 import Stack from '@mui/material/Stack';
+import { Link as RLink } from 'react-router-dom';
 
 
 export function EventCard({ data }) {
@@ -27,7 +28,7 @@ export function EventCard({ data }) {
         <CardMedia
           image={data.cover_path} loading="lazy" />
         <CardContent>
-          <Typography variant='h2'>{data.event_title}</Typography>
+          <Typography variant='h4'><RLink to={'\events\\' + data._id}>{data.event_title}</RLink></Typography>
           <Typography variant='body1'>{data.venue_name}, {data.country}</Typography>
           <Typography variant='body1'>{data.event_dates}</Typography>
         </CardContent>
@@ -98,6 +99,10 @@ export function EventDetailsReg({ formDetails, setFormDetails }) {
       <TextField name="description" label="Description" minRows={2} defaultValue={formDetails.description}
         onChange={(e) => setFormDetails({ ...formDetails, description: e.target.value })} validate="true"
         multiline required></TextField>
+      <IconButton color="primary" component="label">Upload cover image
+        <input hidden accept="image/*" type="file" />
+        <PhotoCamera />
+      </IconButton>
     </>
   );
 }

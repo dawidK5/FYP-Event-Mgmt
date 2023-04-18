@@ -10,7 +10,7 @@
 
 # production
 /build
-/z12eventui/node_modules
+/ui/node_modules
 # misc
 .DS_Store
 .env.local

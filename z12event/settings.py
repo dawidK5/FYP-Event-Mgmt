@@ -41,30 +41,20 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    # 'django.contrib.sessions',
     'django.contrib.messages',
     'rest_framework',
     'rest_framework.authtoken',
-    # 'rest_framework_mongoengine',
-    # 'mongoengine',
     'django_mongoengine.mongo_auth',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic',
     'event_mgmt',
     'api',
-    # 'corsheaders',
 ]
 
 MIDDLEWARE = [
-    # 'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    # 'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
@@ -74,7 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'z12eventui/build'),
+            os.path.join(BASE_DIR, 'ui/build'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -127,10 +117,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-STATIC_ROOT = BASE_DIR / 'z12eventui/build'
+STATIC_ROOT = BASE_DIR / 'ui/build'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,  'z12eventui/build/static'),
+    os.path.join(BASE_DIR,  'ui/build/static'),
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -164,7 +154,8 @@ SESSION_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SAMESITE = 'Strict'
 SESSION_COOKIE_SAMESITE = 'Strict'
 
-
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'media/'
 # REST_FRAMEWORK = {
 #     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 #     'PAGE_SIZE': 5,

@@ -1,4 +1,5 @@
 import { redirect, useNavigate } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
@@ -194,22 +195,23 @@ export function FormAlert({data}) {
   );
 }
 
-export function EventDetailPage({ eventId='6429cd5d2973e9d50aef0d6e' }) {
+export function EventDetailPage({  }) {
+  let { eventId } = useParams();
   const [viewStep, setViewStep] = useState(0);
-  const [eventData, setEventData] = useState('');
+  const [eventDetails, setEventDetails] = useState('');
   const getData = () => {
-    apiGetAndProcess('events/' + eventId, {}, (j) => { console.log(j); setEventData(j) });
+    apiGetAndProcess('events/' + eventId, {}, (j) => { console.log(j); setEventDetails(j) });
   }
   useEffect(() => {
     getData();
   }, [viewStep]);
 
   const unwrapParticipants = () => {
-    if (eventData === '') {
+    if (eventDetails === '') {
       return [];
     }
     const toPrint = [];
-    let ptr = eventData.allowed_participants;
+    let ptr = eventDetails.allowed_participants;
     for ( ; !(ptr instanceof Array); ptr = Object.keys(ptr)[0] ) {
       console.log(...toPrint);
       toPrint.push(Object.keys(ptr));
@@ -224,7 +226,7 @@ export function EventDetailPage({ eventId='6429cd5d2973e9d50aef0d6e' }) {
       <Grid container>
         <Grid item xs={3} />
         <Grid item xs={7}>
-          <Box height='sm' sx={{ backgroundImage: '\\img\\card_cover_1.png' }}></Box>
+          {/* <Box height='sm' sx={{ backgroundImage: '\\img\\card_cover_1.png' }}></Box> */}
           <ImageList fullWidth>
             <ImageListItem fullWidth>
               <img fullWidth src='\img\card_cover_1.png' />
@@ -249,9 +251,9 @@ export function EventDetailPage({ eventId='6429cd5d2973e9d50aef0d6e' }) {
 
         </Grid>
         <Grid px={10} item xs={7}>
-        <Typography bold variant='h3'>{eventData.title}</Typography>
+        <Typography bold variant='h3'>{eventDetails.title}</Typography>
           <Typography bold variant='h5'>Description</Typography>
-          <Typography>{eventData.description}</Typography>
+          <Typography>{eventDetails.description}</Typography>
           <Typography bold variant='h5'>Categories</Typography>
           <Typography variant='subtitle-1'>
           {unwrapParticipants()}
